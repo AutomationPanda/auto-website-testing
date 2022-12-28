@@ -29,8 +29,8 @@ import { BatchInfo, Configuration, VisualGridRunner, StitchMode, BrowserType, Ey
 
   // Set Applitools configuration
   config.setBatch(batch);
-  config.setForceFullPageScreenshot(true);
-  config.setStitchMode(StitchMode.CSS);
+  // config.setForceFullPageScreenshot(true);
+  // config.setStitchMode(StitchMode.CSS);
   config.addBrowser(1600, 1200, BrowserType.CHROME);
   // config.addBrowser(1600, 1200, BrowserType.FIREFOX);
   // config.addBrowser(1600, 1200, BrowserType.SAFARI);
@@ -68,19 +68,18 @@ import { BatchInfo, Configuration, VisualGridRunner, StitchMode, BrowserType, Ey
       // Take the snapshot
       await linkPage.goto(link);
       await eyes.check(link, Target.window().fully());
-      console.log(`Captured ${link}`);
+      console.log(`Checked ${link}`);
   
       // Close Eyes
       await eyes.close(false);
+      console.log(`Closed ${link}`);
 
     })());
   }
 
   // Close all Eyes
   console.log('Waiting for all snapshots to complete...');
-  for (const snapshot of snapshotPromises) {
-    await snapshot;
-  }
+  await Promise.all(snapshotPromises);
 
   // Close the browser
   await browser.close();
