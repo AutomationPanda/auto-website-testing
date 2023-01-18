@@ -1,5 +1,5 @@
 import { chromium } from '@playwright/test';
-import { BatchInfo, Configuration, VisualGridRunner, StitchMode, BrowserType, Eyes, Target } from '@applitools/eyes-playwright';
+import { BatchInfo, Configuration, VisualGridRunner, BrowserType, Eyes, Target } from '@applitools/eyes-playwright';
 
 (async () => {
 
@@ -29,8 +29,6 @@ import { BatchInfo, Configuration, VisualGridRunner, StitchMode, BrowserType, Ey
 
   // Set Applitools configuration
   config.setBatch(batch);
-  // config.setForceFullPageScreenshot(true);
-  // config.setStitchMode(StitchMode.CSS);
   config.addBrowser(1600, 1200, BrowserType.CHROME);
   // config.addBrowser(1600, 1200, BrowserType.FIREFOX);
   // config.addBrowser(1600, 1200, BrowserType.SAFARI);
